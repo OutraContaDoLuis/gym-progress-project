@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.dema.app_gym_progress"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.dema.app_gym_progress"
@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
