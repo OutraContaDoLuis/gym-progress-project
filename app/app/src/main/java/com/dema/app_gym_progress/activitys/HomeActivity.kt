@@ -1,21 +1,25 @@
 package com.dema.app_gym_progress.activitys
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dema.app_gym_progress.CustomDialogs
 import com.dema.app_gym_progress.R
-import com.dema.app_gym_progress.adapters.WorkoutAdapter
+import com.dema.app_gym_progress.adapters.ListWorkoutAdapter
 import com.dema.app_gym_progress.models.WorkoutModel
 
 class HomeActivity : AppCompatActivity() {
 
-    private var workoutList: ArrayList<WorkoutModel?> = ArrayList()
+    private var workoutModelList: ArrayList<WorkoutModel?> = ArrayList()
 
-    private lateinit var recyclerView : RecyclerView
+    private lateinit var listWorkout : ListView
+    private lateinit var btnAddWorkout : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +31,10 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        recyclerView = findViewById(R.id.recycler_view)
+        listWorkout = findViewById(R.id.list_workout)
+        btnAddWorkout = findViewById(R.id.btn_add_workout)
+
+        btnAddWorkout.setOnClickListener { addWorkoutToTheWorkoutModelList() }
     }
 
     override fun onStart() {
@@ -36,23 +43,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setTheInitialWorkoutList() {
-        val addWorkoutModel = WorkoutModel()
-        addWorkoutModel.addWorkout = true
-        workoutList.add(addWorkoutModel)
-
-        val layoutManager = LinearLayoutManager(applicationContext)
-        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        recyclerView.layoutManager = layoutManager
-        val workoutAdapter = WorkoutAdapter(this@HomeActivity, workoutList)
-        recyclerView.adapter = workoutAdapter
+        val listWorkoutAdapter = ListWorkoutAdapter(this@HomeActivity, workoutModelList)
+        listWorkout.adapter = listWorkoutAdapter
     }
 
     fun putTheCurrentWorkoutList(workoutModel: WorkoutModel) {
-        workoutList.add(workoutModel)
+        workoutModelList.add(workoutModel)
 
-        val workoutListReversed = workoutList.reversed() as ArrayList<WorkoutModel?>
+        val listWorkoutAdapter = ListWorkoutAdapter(this@HomeActivity, workoutModelList)
+        listWorkout.adapter = listWorkoutAdapter
+    }
 
-        val workoutAdapter = WorkoutAdapter(this@HomeActivity, workoutListReversed)
-        recyclerView.adapter = workoutAdapter
+    private fun addWorkoutToTheWorkoutModelList() {
+        val customDialogs = CustomDialogs()
+        customDialogs.showDialogToAddWorkout(this@HomeActivity)
     }
 }

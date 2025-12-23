@@ -16,7 +16,7 @@ class CustomDialogs() {
             val dialog = Dialog(context)
             dialog.setContentView(R.layout.modal_add_workout)
             dialog.window?.setLayout(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
 
             dialog.setCancelable(false)
@@ -49,6 +49,7 @@ class CustomDialogs() {
                 workoutModel.nameWorkout = nameWorkout
 
                 (context as? HomeActivity)?.putTheCurrentWorkoutList(workoutModel)
+                dialog.cancel()
             }
 
             dialog.show()

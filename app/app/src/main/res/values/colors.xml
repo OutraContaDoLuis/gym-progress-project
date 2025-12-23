@@ -7,4 +7,7 @@
     <color name="secondColor">#94B4C1</color>
     <color name="bgColor">#e9ebe6</color>
     <color name="secondBgColor">#e9ebe6</color>
+
+    <color name="colorDelete">#F44336</color>
+    <color name="colorEdit">#03A9F4</color>
 </resources>
