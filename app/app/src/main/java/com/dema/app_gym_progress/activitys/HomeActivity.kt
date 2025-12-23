@@ -1,4 +1,4 @@
-package com.dema.app_gym_progress
+package com.dema.app_gym_progress.activitys
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dema.app_gym_progress.R
 import com.dema.app_gym_progress.adapters.WorkoutAdapter
 import com.dema.app_gym_progress.models.WorkoutModel
 
@@ -42,11 +43,16 @@ class HomeActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(applicationContext)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = layoutManager
-        val workoutAdapter = WorkoutAdapter(workoutList)
+        val workoutAdapter = WorkoutAdapter(this@HomeActivity, workoutList)
         recyclerView.adapter = workoutAdapter
     }
 
     fun putTheCurrentWorkoutList(workoutModel: WorkoutModel) {
+        workoutList.add(workoutModel)
 
+        val workoutListReversed = workoutList.reversed() as ArrayList<WorkoutModel?>
+
+        val workoutAdapter = WorkoutAdapter(this@HomeActivity, workoutListReversed)
+        recyclerView.adapter = workoutAdapter
     }
 }

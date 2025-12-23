@@ -1,6 +1,5 @@
-package com.dema.app_gym_progress
+package com.dema.app_gym_progress.activitys
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.dema.app_gym_progress.R
 
 class LoadingLocalDataActivity : AppCompatActivity() {
 
