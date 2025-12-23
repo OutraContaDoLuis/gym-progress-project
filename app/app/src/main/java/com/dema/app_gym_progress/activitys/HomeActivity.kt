@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dema.app_gym_progress.CustomDialogs
 import com.dema.app_gym_progress.R
 import com.dema.app_gym_progress.adapters.ListWorkoutAdapter
+import com.dema.app_gym_progress.fragments.NoWorkoutsFoundedFragment
+import com.dema.app_gym_progress.fragments.WorkoutListFragment
 import com.dema.app_gym_progress.models.WorkoutModel
 
 class HomeActivity : AppCompatActivity() {
@@ -31,7 +33,6 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        listWorkout = findViewById(R.id.list_workout)
         btnAddWorkout = findViewById(R.id.btn_add_workout)
 
         btnAddWorkout.setOnClickListener { addWorkoutToTheWorkoutModelList() }
@@ -39,19 +40,29 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        setTheInitialWorkoutList()
+        setTheInitialFragmentWorkout()
     }
 
-    private fun setTheInitialWorkoutList() {
-        val listWorkoutAdapter = ListWorkoutAdapter(this@HomeActivity, workoutModelList)
-        listWorkout.adapter = listWorkoutAdapter
+    private fun setTheInitialFragmentWorkout() {
+        val fragment = if (workoutModelList.isEmpty()) {
+            NoWorkoutsFoundedFragment()
+        } else {
+            WorkoutListFragment(workoutModelList)
+        }
+
+        supportFragmentManager.beginTransaction().replace(R.id.workout_fragment, fragment).commit()
     }
 
     fun putTheCurrentWorkoutList(workoutModel: WorkoutModel) {
         workoutModelList.add(workoutModel)
 
-        val listWorkoutAdapter = ListWorkoutAdapter(this@HomeActivity, workoutModelList)
-        listWorkout.adapter = listWorkoutAdapter
+        val fragment = if (workoutModelList.isEmpty()) {
+            NoWorkoutsFoundedFragment()
+        } else {
+            WorkoutListFragment(workoutModelList)
+        }
+
+        supportFragmentManager.beginTransaction().replace(R.id.workout_fragment, fragment).commit()
     }
 
     private fun addWorkoutToTheWorkoutModelList() {
