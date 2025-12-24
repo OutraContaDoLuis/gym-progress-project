@@ -26,7 +26,10 @@ class LoadingLocalDataActivity : AppCompatActivity() {
             insets
         }
 
-        sharedPreferences = getSharedPreferences(getString(R.string.file_user_data), MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(
+            getString(R.string.file_user_data),
+            MODE_PRIVATE
+        )
 
         username = sharedPreferences.getString("username", "").toString()
         password = sharedPreferences.getString("password", "").toString()

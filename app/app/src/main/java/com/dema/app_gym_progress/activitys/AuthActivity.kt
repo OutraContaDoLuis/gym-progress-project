@@ -39,6 +39,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun register() {
-
+        val intent = Intent(this@AuthActivity, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -103,8 +103,6 @@
                 android:id="@+id/txt_edit_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:backgroundTint="@android:color/transparent"
                 android:hint="Insira a sua senha"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
