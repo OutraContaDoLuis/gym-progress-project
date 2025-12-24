@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.dema.app_gym_progress.R
 import com.dema.app_gym_progress.activitys.AuthActivity
@@ -19,6 +20,7 @@ class LoginFragment : Fragment() {
     private lateinit var txtInputPassword : TextInputLayout
     private lateinit var txtEditPassword : TextInputEditText
     private lateinit var btnLogin : Button
+    private lateinit var txtChangeToRegister: TextView
 
     private var context : Context? = null
 
@@ -39,8 +41,13 @@ class LoginFragment : Fragment() {
         txtInputPassword = view.findViewById(R.id.txt_input_password)
         txtEditPassword = view.findViewById(R.id.txt_edit_password)
         btnLogin = view.findViewById(R.id.btn_login)
+        txtChangeToRegister = view.findViewById(R.id.txt_change_to_register)
 
         btnLogin.setOnClickListener { validationForms() }
+
+        txtChangeToRegister.setOnClickListener {
+            (requireContext() as? AuthActivity)?.changeFragment(RegisterFragment())
+        }
 
         context = requireContext()
 
