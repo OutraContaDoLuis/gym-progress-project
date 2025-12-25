@@ -1,5 +1,6 @@
 package com.dema.app_gym_progress.activitys
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
@@ -20,7 +21,6 @@ class HomeActivity : AppCompatActivity() {
 
     private var workoutModelList: ArrayList<WorkoutModel?> = ArrayList()
 
-    private lateinit var listWorkout : ListView
     private lateinit var btnAddWorkout : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,18 +44,32 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setTheInitialFragmentWorkout() {
-        val fragment = if (workoutModelList.isEmpty()) {
-            NoWorkoutsFoundedFragment()
-        } else {
-            WorkoutListFragment(workoutModelList)
-        }
-
-        supportFragmentManager.beginTransaction().replace(R.id.workout_fragment, fragment).commit()
+        setTheFragmentWorkout()
     }
 
     fun putTheCurrentWorkoutList(workoutModel: WorkoutModel) {
         workoutModelList.add(workoutModel)
 
+        setTheFragmentWorkout()
+    }
+
+    fun deleteItemFromTheCurrentWorkoutList(position: Int) {
+        workoutModelList.removeAt(position)
+
+        setTheFragmentWorkout()
+    }
+
+    fun editItemFromTheCurrentWorkoutList(position: Int) {
+
+    }
+
+    fun goToWorkoutActivity(position: Int) {
+        val intent = Intent(this@HomeActivity, WorkoutActivity::class.java)
+        intent.putExtra("workoutName", workoutModelList[position]?.nameWorkout)
+        startActivity(intent)
+    }
+
+    private fun setTheFragmentWorkout() {
         val fragment = if (workoutModelList.isEmpty()) {
             NoWorkoutsFoundedFragment()
         } else {

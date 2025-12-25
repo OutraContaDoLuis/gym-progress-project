@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    app:cardCornerRadius="16dp">
+    android:layout_marginHorizontal="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
@@ -36,6 +36,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -63,6 +64,19 @@
                 app:fabCustomSize="32dp"
                 app:maxImageSize="16dp"
                 app:srcCompat="@drawable/ic_baseline_edit_24"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_go_to_workout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                app:backgroundTint="@color/primaryColor"
+                app:ensureMinTouchTargetSize="false"
+                app:fabCustomSize="32dp"
+                app:maxImageSize="16dp"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
                 app:tint="@color/white" />
         </LinearLayout>
 
