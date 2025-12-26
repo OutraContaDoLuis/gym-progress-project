@@ -1,5 +1,6 @@
 package com.dema.app_gym_progress.activitys
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -73,7 +74,8 @@ class WorkoutActivity : AppCompatActivity() {
     }
 
     fun goToSessionActivity(position: Int) {
-
+        val intent = Intent(this, SessionActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setTheFragmentSession() {

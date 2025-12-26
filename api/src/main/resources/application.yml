@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api
+  server:
+    address: 192.168.0.16
+  data-source:
+    driver-class: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_gym_progress
+    username: root
+    password: limaamor76
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: false
+    open-in-view: false
