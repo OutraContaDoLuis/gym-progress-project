@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.dema.app_gym_progress.R
-import com.dema.app_gym_progress.activitys.HomeActivity
 import com.dema.app_gym_progress.activitys.WorkoutActivity
 import com.dema.app_gym_progress.models.SessionModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,7 +20,7 @@ class ListSessionAdapter(context: Context, listSession: ArrayList<SessionModel?>
         val listItem = getItem(position)
 
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.workout_item, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.session_item, parent, false)
         }
 
         val txtWorkoutName = view.findViewById<TextView>(R.id.txt_session_name)

@@ -1,13 +1,16 @@
 package com.dema.app_gym_progress.activitys
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.dema.app_gym_progress.CustomDialogs
 import com.dema.app_gym_progress.R
+import com.dema.app_gym_progress.activitys.HomeActivity
 import com.dema.app_gym_progress.fragments.NoSessionsFoundedFragment
 import com.dema.app_gym_progress.fragments.SessionListFragment
 import com.dema.app_gym_progress.models.SessionModel
@@ -16,6 +19,7 @@ class WorkoutActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var txtWorkoutName: TextView
+    private lateinit var btnAddSession: Button
 
     private var sessionModelList: ArrayList<SessionModel?> = ArrayList()
 
@@ -33,12 +37,14 @@ class WorkoutActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         txtWorkoutName = findViewById(R.id.txt_workout_name)
+        btnAddSession = findViewById(R.id.btn_add_session)
 
         val thisIntent = this.intent
         workoutName = thisIntent.getStringExtra("workoutName").toString()
 
         toolbar.setNavigationOnClickListener { finish() }
         txtWorkoutName.text = workoutName
+        btnAddSession.setOnClickListener { addSessionToTheSessionModelList() }
     }
 
     override fun onStart() {
@@ -78,5 +84,10 @@ class WorkoutActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.beginTransaction().replace(R.id.session_fragment, fragment).commit()
+    }
+
+    private fun addSessionToTheSessionModelList() {
+        val customDialogs = CustomDialogs()
+        customDialogs.showDialogToAddSession(this@WorkoutActivity)
     }
 }

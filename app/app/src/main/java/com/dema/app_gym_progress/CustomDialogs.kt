@@ -96,7 +96,7 @@ class CustomDialogs() {
                 val sessionModel = SessionModel()
                 sessionModel.sessionName = sessionName
 
-                (context as? WorkoutActivity)?.putThe(sessionModel)
+                (context as? WorkoutActivity)?.putTheCurrentSessionList(sessionModel)
                 dialog.cancel()
             }
 
