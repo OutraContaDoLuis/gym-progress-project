@@ -5,12 +5,12 @@ import java.io.Serializable
 
 data class ExerciseModel(
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("type")
-    val type: String
+    val type: String?
 
 ) : Serializable
